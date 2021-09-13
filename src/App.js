@@ -11,12 +11,8 @@ function App() {
       <Navigation />
 
       <Switch>
-      <Route path="/resize">
-          <Resize />
-        </Route>
-        <Route path="/">
-          <Upload />
-        </Route>
+        <Route path="/" exact component={Upload} />
+        <Route path="/resize" component={Resize} />
       </Switch>
 
       <Footer />
