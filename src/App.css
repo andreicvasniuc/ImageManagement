@@ -11366,3 +11366,30 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 118px;
+  height: 20px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+  position: relative;
+  left: 45px;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
