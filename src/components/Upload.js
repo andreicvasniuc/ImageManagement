@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
-import axios from "axios";
-import { toast } from 'react-toastify';
+import uploadImage from "../api/uploadImage";
 
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -10,33 +9,19 @@ const Upload = () => {
   const upload = () => {
     if(!selectedFile) return;
 
-    const formData = new FormData();
-    formData.append('file', selectedFile, selectedFile.name);
-
     setIsLoading(true);
-    axios.post('https://localhost:5001/api/image/upload', formData)
-    .then(response => {
-      console.log('response', response);
-      if(response.status === 200) {
-        resetFileInput();
-        setSelectedFile(null);
-        if(response.data === 201) {
-          toast.success(`The image ${selectedFile.name} has been uploaded successfully!`);
-        }
-      } else {
-        console.log('response', response);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      toast.error(`An error occurred: ${error}`);
-    })
-    .finally(() => setIsLoading(false));
+    uploadImage(selectedFile, () => {
+      setIsLoading(false);
+      resetFileInput();
+      setSelectedFile(null);
+    });
   };
 
   const resetFileInput = () => fileInputRef.current.value = '';
 
   const selectFile = event => setSelectedFile(event.target.files[0]);
+
+  console.log('Upload', process, process.env);
 
   return (
     <section className="call-to-action text-white text-center">
