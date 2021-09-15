@@ -1,11 +1,12 @@
 import axios from "axios";
 import { toast } from 'react-toastify';
+import getApiHostName from './getApiHostName';
 
 const uploadImage = (file, action) => {
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    axios.post('https://localhost:5001/api/image/upload', formData)
+    axios.post(`${getApiHostName()}/api/image/upload`, formData)
     .then(response => {
       console.log('response', response);
       if(response.status === 200) {
