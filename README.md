@@ -2,6 +2,10 @@
 
 This is the UI react project to manage images.
 
+## Deploy to Azure Webapp
+* Upload images API host [REACT_APP_UPLOAD_IMAGE_HOST] should be added to the pipeline variables.
+* Resize images API host [REACT_APP_RESIZE_IMAGE_HOST] should be added to the pipeline variables.
+
 ## Available Scripts
 
 In the project directory, you can run:

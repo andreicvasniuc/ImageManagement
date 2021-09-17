@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import uploadImage from "../api/uploadImage";
+import Container from "./Container";
 
-const Upload = () => {
+const Upload = ({ onComplete }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef();
@@ -13,6 +14,7 @@ const Upload = () => {
     uploadImage(selectedFile, () => {
       setIsLoading(false);
       resetFileInput();
+      onComplete(selectedFile.name);
       setSelectedFile(null);
     });
   };
@@ -24,22 +26,18 @@ const Upload = () => {
   console.log('Upload', process, process.env);
 
   return (
-    <section className="call-to-action text-white text-center">
-      <div className="container position-relative">
-          <div className="row justify-content-center">
-              <div className="col-xl-6">
-                  <h2 className="mb-4">You can upload your image with dimensions 640px 640px</h2>
-                  
-                  <input type="file" onChange={selectFile} ref={fileInputRef} />
+    <Container>
+      <div className="col-xl-6">
+        <h2 className="mb-4">You can upload your image with dimensions 640px 640px</h2>
+        
+        <input type="file" onChange={selectFile} ref={fileInputRef} />
 
-                  <button className={!!selectedFile && !isLoading ? "btn btn-primary btn-lg" : "btn btn-primary btn-lg disabled"} type="button" onClick={upload}>
-                    {isLoading ? <div className="lds-dual-ring"></div> : <span>Upload image</span>}
-                  </button>
-              </div>
-          </div>
+        <button className={!!selectedFile && !isLoading ? "btn btn-primary btn-lg" : "btn btn-primary btn-lg disabled"} type="button" onClick={upload}>
+          {isLoading ? <div className="lds-dual-ring"></div> : <span>Upload image</span>}
+        </button>
       </div>
-    </section>
+    </Container>
   );
-}
+};
 
 export default Upload;

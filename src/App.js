@@ -1,25 +1,20 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import Upload from './components/Upload';
-import Resize from './components/Resize';
+import Main from './components/Main';
 
 function App() {
   return (
-    <Router>
+    <>
       <Navigation />
 
-      <Switch>
-        <Route path="/" exact component={Upload} />
-        <Route path="/resize" component={Resize} />
-      </Switch>
+      <Main />
 
       <Footer />
       <ToastContainer />
-    </Router>
+    </>
   );
 }
 

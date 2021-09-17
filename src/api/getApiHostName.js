@@ -1,2 +1,2 @@
-const getApiHostName = () => process.env.REACT_APP_UPLOAD_IMAGE_HOST || 'https://localhost:5001';
-export default getApiHostName;
+export const getUploadImageHost = () => process.env.REACT_APP_UPLOAD_IMAGE_HOST || 'https://localhost:5001';
+export const getResizeImageHost = () => process.env.REACT_APP_RESIZE_IMAGE_HOST || 'https://localhost:5003';
