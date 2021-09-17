@@ -1,6 +1,6 @@
 # ImageManagement
 
-This is the UI react project to manage images.
+This is the UI react project to manage (upload, resize) images.
 
 ## Deploy to Azure Webapp
 * Upload images API host [REACT_APP_UPLOAD_IMAGE_HOST] should be added to the CI pipeline variables.
